@@ -59,7 +59,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding-block:
 .ph.alt{background:linear-gradient(200deg,var(--img4),var(--img1) 60%,var(--img2))}
 .ph.deep{background:linear-gradient(180deg,var(--img2),var(--img3))}
 .ph svg{position:absolute;inset:0;width:100%;height:100%}
-.ph .tag{position:absolute;left:14px;bottom:12px;font:400 .66rem/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink);background:rgba(46,36,32,.45);padding:7px 11px;border-radius:99px}
+.ph .tag{z-index:2;position:absolute;left:14px;bottom:12px;font:400 .66rem/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink);background:rgba(46,36,32,.45);padding:7px 11px;border-radius:99px}
 .ph-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 
 /* hero */
@@ -275,11 +275,11 @@ footer{border-top:1px solid var(--line);padding-block:30px;display:flex;justify-
 <section id="aprende">
   <div class="head"><span class="eyebrow">Aprende styling</span><h2>Aprende a <em>vestirte tú misma</em></h2><p>Guías y clases para que armes tus looks sin depender de nadie.</p></div>
   <div class="courses">
-    <article class="course"><div class="ph deep"><svg viewBox="0 0 300 375" aria-hidden="true"><path d="M150 70 L150 92 M150 92 C120 96 70 130 60 150 H240 C230 130 180 96 150 92" fill="none" stroke="#EDE6DC" stroke-opacity=".7" stroke-width="3"/><rect x="95" y="190" width="110" height="130" rx="4" fill="#EDE6DC" fill-opacity=".25"/></svg><span class="tag">Portada ejemplo</span></div>
+    <article class="course"><div class="ph deep photo"><img class="ph-img" src="img/look2.jpg" alt="Portada de la guía Clóset cápsula" loading="lazy" style="object-position:50% 20%"></div>
       <div class="row"><b>Guía: Clóset cápsula</b><b>$29</b></div><p>PDF de 40 páginas para armar 30 looks con 20 prendas.</p><a href="#reservar" data-plan="Guía Clóset cápsula">Comprar guía</a></article>
-    <article class="course"><div class="ph alt"><svg viewBox="0 0 300 375" aria-hidden="true"><path d="M150 70 C130 110 120 150 100 330 H200 C180 150 170 110 150 70Z" fill="#2E2420" fill-opacity=".4"/></svg><span class="tag">Portada ejemplo</span></div>
+    <article class="course"><div class="ph alt photo"><img class="ph-img" src="img/look1.jpg" alt="Portada de la masterclass Tu estilo" loading="lazy" style="object-position:50% 20%"></div>
       <div class="row"><b>Masterclass: Tu estilo</b><b>$79</b></div><p>3 clases en video para definir tu identidad visual y tus colores.</p><a href="#reservar" data-plan="Masterclass Tu estilo">Unirme</a></article>
-    <article class="course"><div class="ph"><svg viewBox="0 0 300 375" aria-hidden="true"><circle cx="150" cy="130" r="46" fill="none" stroke="#EDE6DC" stroke-opacity=".7" stroke-width="3"/><circle cx="150" cy="130" r="14" fill="#EDE6DC" fill-opacity=".5"/></svg><span class="tag">Portada ejemplo</span></div>
+    <article class="course"><div class="ph  photo"><img class="ph-img" src="img/look7.jpg" alt="Portada de la mentoría 1:1" loading="lazy" style="object-position:50% 20%"></div>
       <div class="row"><b>Mentoría 1:1 · 4 semanas</b><b>$350</b></div><p>Acompañamiento semanal para construir tu estilo con feedback real.</p><a href="#reservar" data-plan="Mentoría 1:1">Aplicar</a></article>
   </div>
 </section>
@@ -289,16 +289,16 @@ footer{border-top:1px solid var(--line);padding-block:30px;display:flex;justify-
 <section id="looks">
   <div class="head"><span class="eyebrow">Lookbook</span><h2>Looks que <em>se sienten</em> como ellas</h2></div>
   <div class="look">
-    <div class="ph"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="100" r="24" fill="#2E2420" opacity=".5"/><path d="M110 140 H190 L214 400 H86Z" fill="#2E2420" opacity=".45"/></svg><span class="tag">Look 01</span></div>
-    <div class="ph alt"><svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="90" r="22" fill="#2E2420" opacity=".5"/><path d="M118 125 H182 L196 230 L186 375 H114 L104 230Z" fill="#2E2420" opacity=".45"/></svg><span class="tag">Look 02</span></div>
-    <div class="ph deep"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="90" r="22" fill="#EDE6DC" opacity=".6"/><path d="M104 300 L120 130 H180 L196 300Z" fill="#EDE6DC" opacity=".4"/></svg><span class="tag">Look 03</span></div>
-    <div class="ph"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="110" r="24" fill="#2E2420" opacity=".5"/><path d="M96 400 L118 150 H182 L204 400Z" fill="#2E2420" opacity=".4"/><path d="M118 150 L150 260 L182 150" fill="none" stroke="#EDE6DC" stroke-opacity=".5" stroke-width="2"/></svg><span class="tag">Look 04</span></div>
-    <div class="ph alt"><svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="100" r="22" fill="#2E2420" opacity=".5"/><path d="M112 134 H188 L220 375 H80Z" fill="#2E2420" opacity=".42"/></svg><span class="tag">Look 05</span></div>
-    <div class="ph deep"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="104" r="24" fill="#EDE6DC" opacity=".6"/><path d="M112 140 H188 L200 400 H100Z" fill="#EDE6DC" opacity=".38"/></svg><span class="tag">Look 06</span></div>
+    <div class="ph  photo"><img class="ph-img" src="img/look1.jpg" alt="Look de ejemplo 1" loading="lazy" style="object-position:50% 20%"><span class="tag">Look 01</span></div>
+    <div class="ph alt photo"><img class="ph-img" src="img/look2.jpg" alt="Look de ejemplo 2" loading="lazy" style="object-position:50% 20%"><span class="tag">Look 02</span></div>
+    <div class="ph deep photo"><img class="ph-img" src="img/look5.jpg" alt="Look de ejemplo 3" loading="lazy" style="object-position:50% 20%"><span class="tag">Look 03</span></div>
+    <div class="ph  photo"><img class="ph-img" src="img/look7.jpg" alt="Look de ejemplo 4" loading="lazy" style="object-position:50% 20%"><span class="tag">Look 04</span></div>
+    <div class="ph alt photo"><img class="ph-img" src="img/look8.jpg" alt="Look de ejemplo 5" loading="lazy" style="object-position:50% 20%"><span class="tag">Look 05</span></div>
+    <div class="ph deep photo"><img class="ph-img" src="img/look6.jpg" alt="Look de ejemplo 6" loading="lazy" style="object-position:50% 20%"><span class="tag">Look 06</span></div>
   </div>
   <div class="ba">
-    <figure><div class="ph deep"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="110" r="24" fill="#EDE6DC" opacity=".5"/><path d="M104 150 H196 L206 400 H94Z" fill="#EDE6DC" opacity=".3"/></svg></div><figcaption>Antes</figcaption></figure>
-    <figure><div class="ph alt"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="150" cy="110" r="24" fill="#2E2420" opacity=".5"/><path d="M118 150 H182 L214 400 H86Z" fill="#2E2420" opacity=".45"/></svg></div><figcaption>Después</figcaption></figure>
+    <figure><div class="ph deep photo"><img class="ph-img" src="img/look3.jpg" alt="Antes: look casual" loading="lazy" style="object-position:50% 10%"></div><figcaption>Antes</figcaption></figure>
+    <figure><div class="ph alt photo"><img class="ph-img" src="img/look4.jpg" alt="Después: look armado" loading="lazy" style="object-position:50% 10%"></div><figcaption>Después</figcaption></figure>
   </div>
 </section>
 
