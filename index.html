@@ -1,4 +1,8 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>deviaz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +26,8 @@
   --img1:#4A3A30; --img2:#6B5342; --img3:#8A6B52; --img4:#33291F; color-scheme:dark}
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;margin:0}
+body{margin:0}
 body{background:var(--bg);color:var(--ink);font:300 17px/1.65 var(--f-body);padding-inline:20px;padding-block:0 84px;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -72,6 +77,18 @@ nav{display:flex;justify-content:space-between;align-items:center;padding-block:
 .strip span::after{content:"✦";margin-left:48px;font-style:normal;font-size:.8rem;color:var(--accent)}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.strip div{animation:none}.btn{transition:none}html{scroll-behavior:auto}}
+
+/* efectos de foto */
+.ph.photo{overflow:hidden}
+.ph.photo .ph-img{filter:saturate(.9) contrast(1.03) sepia(.1)}
+.ph.photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(46,36,32,.45) 0%,rgba(46,36,32,0) 38%),
+             radial-gradient(120% 90% at 50% 0%,rgba(164,117,81,.0) 40%,rgba(164,117,81,.28) 100%);
+  mix-blend-mode:normal}
+#top .ph.photo{box-shadow:0 40px 90px -30px rgba(164,117,81,.55);outline:1px solid var(--accent);outline-offset:12px}
+#top .ph.photo .ph-img{animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){#top .ph.photo .ph-img{animation:none}}
 
 /* quiz */
 .quiz{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:clamp(24px,5vw,56px);max-width:760px;display:grid;gap:26px;min-height:420px;align-content:start}
@@ -172,6 +189,8 @@ footer{border-top:1px solid var(--line);padding-block:30px;display:flex;justify-
 .dock .btn{padding:13px 22px}
 @media(max-width:520px){.dock span{display:none}.dock .btn{width:100%;justify-content:center}}
 </style>
+</head>
+<body>
 
 <div class="wrap">
 <nav>
@@ -317,7 +336,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;display:flex;justify-
   <p>Cuéntame qué necesitas y te respondo con fecha disponible.</p>
   <a class="btn" id="wa" href="#reservar" rel="noopener">Escribir por WhatsApp</a>
   <span class="num" id="num"></span>
-  <a href="https://www.instagram.com/pdeviagam" rel="noopener" style="font-size:.85rem;color:var(--muted)">o sígueme en Instagram @pdeviagam</a>
+  <a href="https://www.instagram.com/pdeviagam" target="_blank" rel="noopener" style="font-size:.85rem;color:var(--muted)">o sígueme en Instagram @pdeviagam</a>
 </section>
 
 <footer><span>© 2026 deviaz · @pdeviagam</span><span>Styling · Personal shopper · Autoestima</span></footer>
@@ -358,7 +377,7 @@ function pick(){
 }
 function el(t, c, txt){var e=document.createElement(t); if(c) e.className=c; if(txt) e.textContent=txt; return e;}
 function render(){
-  box.textContent = "";
+  box.textContent = ""; box.classList.add("photo");
   if (step < QS.length){
     var Q = QS[step];
     var bar = el("div","bar"), fill = el("i"); fill.style.width = (step/QS.length*100)+"%"; bar.appendChild(fill);
@@ -384,7 +403,7 @@ function render(){
     res.appendChild(el("p","why","Estilo que te atrae: "+ans.estilo.toLowerCase()+". "+ (ans.presu===QS[4].o[0] ? "Lo armamos cuidando tu presupuesto." : "Lo armamos a tu medida.")));
     var row = el("div","row");
     var msg = "Hola, Paty! Hice el quiz de deviaz. Mi resultado: "+P.n+". Quiero: "+ans.meta.toLowerCase()+". Me cuesta: "+ans.freno.toLowerCase()+". Estilo: "+ans.estilo.toLowerCase()+". Acompañamiento: "+ans.apoyo.toLowerCase()+". Presupuesto: "+ans.presu.toLowerCase()+".";
-    var go = el("a","btn","Reservar por WhatsApp"); go.href = link(msg); go.rel="noopener";
+    var go = el("a","btn","Reservar por WhatsApp"); go.href = link(msg); go.rel="noopener"; go.target="_blank";
     var again = el("button","btn ghost","Repetir quiz"); again.type="button";
     again.addEventListener("click", function(){ ans={}; step=0; render(); });
     row.appendChild(go); row.appendChild(again); res.appendChild(row);
@@ -392,12 +411,22 @@ function render(){
   }
 }
 render();
-function refresh(){["wa","wa2"].forEach(function(id){document.getElementById(id).href = link();});}
+function refresh(){["wa","wa2"].forEach(function(id){var a=document.getElementById(id); a.href = link(); a.target="_blank";});}
+// Foto: pegar aquí la imagen en base64 ("data:image/jpeg;base64,...") para mostrarla en portada y "Sobre mí"
+var PHOTO = "foto.jpg";
+if (PHOTO){
+  [["#top .ph","58% 30%",""],["#sobre .ph","55% 40%","transform:scale(1.25);transform-origin:55% 40%"]].forEach(function(c){
+    var box = document.querySelector(c[0]); if(!box) return;
+    box.textContent = "";
+    var im = document.createElement("img"); im.className="ph-img"; im.src=PHOTO; im.alt="Stylist de deviaz";
+    im.style.cssText = "object-position:"+c[1]+";"+c[2]; box.appendChild(im);
+  });
+}
 document.getElementById("num").textContent = "WhatsApp +" + WHATSAPP;
 document.querySelectorAll("[data-plan]").forEach(function(a){
   a.addEventListener("click", function(){plan = a.getAttribute("data-plan"); refresh();});
 });
 refresh();
 </script>
-
-</body></html>
+</body>
+</html>
